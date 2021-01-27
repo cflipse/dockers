@@ -1,1 +1,11 @@
-[]
+- id: '1611759104735'
+  alias: Laundry Lighting
+  description: turns on utility room lights
+  use_blueprint:
+    path: homeassistant/motion_switch.yaml
+    input:
+      motion_entity: binary_sensor.zw100_multisensor_6_home_security_motion_detected_2
+      no_motion_wait: '120'
+      light_target:
+        entity_id:
+        - switch.utility_room_lighting_switch
