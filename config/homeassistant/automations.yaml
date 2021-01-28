@@ -6,6 +6,5 @@
     input:
       motion_entity: binary_sensor.zw100_multisensor_6_home_security_motion_detected_2
       no_motion_wait: '120'
-      light_target:
-        entity_id:
-        - switch.utility_room_lighting_switch
+      switch_target:
+        entity_id: switch.utility_room_lighting_switch
