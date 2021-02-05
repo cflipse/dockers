@@ -4,7 +4,8 @@
   use_blueprint:
     path: homeassistant/motion_switch.yaml
     input:
-      motion_entity: binary_sensor.zw100_multisensor_6_home_security_motion_detected_2
-      no_motion_wait: '120'
+      no_motion_wait: '600'
+      motion_entity: binary_sensor.utility_room_sensor_home_security_motion_detection_2
       switch_target:
-        entity_id: switch.utility_room_lighting_switch
+        entity_id:
+        - switch.utility_lights_current_value_2
