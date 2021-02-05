@@ -1,0 +1,3 @@
+.env
+config/homeassistant/mqtt_dump.txt
+config/homeassistant/tts/

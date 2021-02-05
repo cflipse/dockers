@@ -14,22 +14,14 @@ services:
     restart: unless-stopped
     network_mode: host
 
-  ozwd:
-    image: openzwave/ozwdaemon:allinone-latest
-    container_name: 'ozwd'
-    security_opt:
-      - seccomp:unconfined
+  zwavejs:
+    image: zwavejs/zwavejs2mqtt:latest
+    tty: true
+    stop_signal: SIGINT
+    restart: unless-stopped
     devices:
       - "/dev/serial/by-id/usb-0658_0200_01FFFFFF-FFFF-FFFF-FFFF-150916075924-if00:/dev/ttyACM0:rmw"  # homeseer
       # - "/dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0:rmw"  # aeotech
     volumes:
-      - "./config/ozwd:/opt/ozw/config"
-    ports:
-      - "1983:1983"
-      - "5901:5901"
-      - "7800:7800"
-    environment:
-      MQTT_SERVER: "192.168.1.11"
-      USB_PATH: "/dev/ttyACM0"
-
-    restart: unless-stopped
+      - "./config/zwavejs2mqtt:/usr/src/app/store"
+    network_mode: host
