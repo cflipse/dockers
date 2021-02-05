@@ -15,6 +15,7 @@ services:
     network_mode: host
 
   zwavejs:
+    container_name: zwavej2
     image: zwavejs/zwavejs2mqtt:latest
     tty: true
     stop_signal: SIGINT
