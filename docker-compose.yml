@@ -6,7 +6,7 @@ services:
     image: homeassistant/home-assistant:stable
 
     volumes:
-      - "./config/homeassistant:/config"
+      - "./homeassistant:/config"
 
     environment:
       - TZ=America/New_York
@@ -23,5 +23,5 @@ services:
       - "/dev/serial/by-id/usb-0658_0200_01FFFFFF-FFFF-FFFF-FFFF-150916075924-if00:/dev/ttyACM0:rmw"  # homeseer
       # - "/dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0:rmw"  # aeotech
     volumes:
-      - "./config/zwavejs2mqtt:/usr/src/app/store"
+      - "./zwavejs2mqtt:/usr/src/app/store"
     network_mode: host
