@@ -14,18 +14,5 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-
-cover:
-  - platform: myq
-    username: cflipse
-    password: !secret myq_password
-
-device_tracker:
-  - platform: netgear
-    host: 192.168.1.1
-    port: 80
-    username: admin
-    password: !secret orbi_password
-    new_device_defaults:
-      track_new_devices: true
-    accesspoints:
+cover: !include cover.yaml
+device_tracker: !include device_tracker.yaml
