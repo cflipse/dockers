@@ -1,7 +1,0 @@
-remove_cleaner_code:
-  alias: Remove cleaner lock code
-  sequence:
-    - service: zwave_js.clear_user_lock_code
-      data:
-        code_slot: 3
-  mode: single

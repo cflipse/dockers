@@ -1,0 +1,54 @@
+  input_boolean:
+    cleaner_access:
+      name: Enable the cleaner door code
+
+  script:
+    add_cleaner_code:
+      alias: 'Lock: Add cleaner code'
+      mode: single
+      sequence:
+        - service: zwave_js.set_lock_usercode
+          data:
+            entity_id:
+              - lock.basement_door_current_lock_mode
+              - lock.front_door_current_lock_mode
+            code_slot: 3
+            usercode: !secret cleaner_door_code
+
+
+    remove_cleaner_code:
+      alias: 'Lock: Remove cleaner code'
+      mode: single
+      sequence:
+        - service: zwave_js.clear_lock_usercode
+          data:
+            entity_id:
+              - lock.basement_door_current_lock_mode
+              - lock.front_door_current_lock_mode
+            code_slot: 3
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.cleaner_access
+
+
+  automation:
+    - alias: Enable Cleaner Access
+      trigger:
+        platform: state
+        entity_id: input_boolean.cleaner_access
+        from: 'off'
+        to: 'on'
+      action:
+        service: script.turn_on
+        entity_id: script.add_cleaner_code
+
+    - alias: Disable Cleaner Access
+      trigger:
+        platform: state
+        entity_id: input_boolean.cleaner_access
+        from: 'on'
+        to: 'off'
+      action:
+        service: script.turn_on
+        entity_id: script.remove_cleaner_code
+
+
