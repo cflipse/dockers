@@ -1,0 +1,8 @@
+add_cleaner_code:
+  alias: Add cleaner lock code
+  sequence:
+    - service: zwave_js.set_lock_usercode
+      data: 
+        code_slot: 3
+        usercode: !secret cleaner_door_code
+  mode: single

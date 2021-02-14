@@ -1,0 +1,9 @@
+- alias: Disable Cleaner Access
+  trigger:
+    platform: state
+    entity_id: input_boolean.cleaner_access
+    from: 'on'
+    to: 'off'
+  action:
+    service: script.turn_on
+    entity_id: script.remove_cleaner_code
