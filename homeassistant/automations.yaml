@@ -47,3 +47,33 @@
     data: {}
     entity_id: input_boolean.cleaner_access
   mode: single
+- id: '1613333588711'
+  alias: Office lamp
+  description: Turn on the office lamp when I'm in the room, and the lights are low
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.office_home_security_motion_detection
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.office_illuminance
+    below: '23'
+  action:
+  - type: turn_on
+    device_id: 6224466d47425a536ec34a34f7842ee5
+    entity_id: light.plugin_dimmer_current_value
+    domain: light
+    brightness_pct: 100
+  - wait_for_trigger:
+    - platform: state
+      entity_id: binary_sensor.office_home_security_motion_detection
+      from: 'on'
+      to: 'off'
+  - wait_template: ''
+    timeout: '60'
+  - type: turn_off
+    device_id: 6224466d47425a536ec34a34f7842ee5
+    entity_id: light.plugin_dimmer_current_value
+    domain: light
+  mode: restart
+  max_exceeded: silent
