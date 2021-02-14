@@ -1,4 +1,0 @@
-- platform: myq
-  friendly_name: Garage Door
-  username: cflipse
-  password: !secret myq_password
