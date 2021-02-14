@@ -28,3 +28,22 @@
       button_a3: []
       button_a_held: []
       button_b_held: []
+- id: '1613332049244'
+  alias: Trigger cleaning day
+  description: Enable cleaner's access
+  trigger:
+  - platform: time
+    at: '8:00'
+  condition:
+  - condition: time
+    weekday:
+    - fri
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.cleaner_access
+  - delay: 08:00
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.cleaner_access
+  mode: single
