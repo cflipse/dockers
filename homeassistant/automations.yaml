@@ -9,3 +9,22 @@
       switch_target:
         entity_id:
         - switch.utility_lights_current_value_2
+- id: '1613319585064'
+  alias: Control Floodlight from deck
+  description: ''
+  use_blueprint:
+    path: homeassistant/multitap.yaml
+    input:
+      homeseer_switch: 45f791a29a1696accabe141150fa24fb
+      button_a2:
+      - service: light.turn_on
+        data: {}
+        entity_id: light.flood_light_current_value
+      button_b2:
+      - type: turn_off
+        device_id: 20c203fecca7c2d594f59b29c14a9be9
+        entity_id: light.flood_light_current_value
+        domain: light
+      button_a3: []
+      button_a_held: []
+      button_b_held: []

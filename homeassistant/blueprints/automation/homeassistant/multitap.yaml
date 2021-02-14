@@ -1,16 +1,15 @@
 blueprint:
-  name: Homeseer HS-WD200+ Dimmer (ZWave-JS)
-  description: Create automations for the Homeseer HS-WD200+ Dimmer using the ZWave-JS integration. 
+  name: Homeseer Multitap (ZWave-JS)
+  description: Create automations for the Homeseer HS-Wx200+ Switches and Dimmers using the ZWave-JS integration. 
   domain: automation
   input:
     homeseer_switch:
-      name: Homeseer Dimmer
+      name: Homeseer Switch
       description: "List of available Homeseer Dimmers"
       selector:
           device:
             integration: zwave_js
             manufacturer: HomeSeer Technologies
-            model: HS-WD200+
     ## Paddle Press 1 time
     button_a:
       name: Button A - Up/On press 1x
