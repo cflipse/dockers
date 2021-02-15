@@ -77,3 +77,20 @@
     domain: light
   mode: restart
   max_exceeded: silent
+- id: '1613414120164'
+  alias: 'Lock all the doors when I leave home'
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.chris_flipse
+    zone: zone.home
+    event: leave
+  action:
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - service: script.lock_all_doors
+    data: {}
+  mode: restart

@@ -1,0 +1,13 @@
+lock_all_doors:
+  alias: Lock all doors
+  sequence:
+  - device_id: 753957af8e3abe63a284a342a488f743
+    domain: lock
+    entity_id: lock.basement_door_current_lock_mode
+    type: lock
+  - device_id: f763582921ce603e070a15dca89f57e2
+    domain: lock
+    entity_id: lock.front_door_current_lock_mode
+    type: lock
+  mode: single
+  icon: mdi:lock
