@@ -2,5 +2,5 @@ door_locks:
   name: Door Locks
   all: true
   entities:
-    - lock.basement_door_current_lock_mode
-    - lock.front_door_current_lock_mode
+    - lock.basement_door
+    - lock.front_door

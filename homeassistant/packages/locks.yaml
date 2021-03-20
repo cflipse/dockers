@@ -10,8 +10,8 @@
         - service: zwave_js.set_lock_usercode
           data:
             entity_id:
-              - lock.basement_door_current_lock_mode
-              - lock.front_door_current_lock_mode
+              - lock.basement_door
+              - lock.front_door
             code_slot: 3
             usercode: !secret cleaner_door_code
 
@@ -23,8 +23,8 @@
         - service: zwave_js.clear_lock_usercode
           data:
             entity_id:
-              - lock.basement_door_current_lock_mode
-              - lock.front_door_current_lock_mode
+              - lock.basement_door
+              - lock.front_door
             code_slot: 3
         - service: input_boolean.turn_off
           entity_id: input_boolean.cleaner_access
