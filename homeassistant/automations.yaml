@@ -94,3 +94,57 @@
   - service: script.lock_all_doors
     data: {}
   mode: restart
+- id: '1615922538846'
+  alias: Turn on great room light at dusk
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -0:30:00
+  condition:
+  - condition: device
+    device_id: ee1b7c9f184248b59ee5e6923a6f4e3e
+    domain: media_player
+    entity_id: media_player.great_room_tv
+    type: is_off
+  action:
+  - type: turn_on
+    device_id: 9a66d2ec39748cf20214a6960f1e485f
+    entity_id: switch.desk_light_current_value_2
+    domain: switch
+  mode: single
+- id: '1615923510099'
+  alias: lockdown at night
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00'
+  condition: []
+  action:
+  - service: script.lock_all_doors
+    data: {}
+  - device_id: 09c6fe0c339f9ebddc4a06c2a0ae45d2
+    domain: cover
+    entity_id: cover.left_side
+    type: close
+  - device_id: fb4fde03fffae59d2681592eb9b82a89
+    domain: cover
+    entity_id: cover.right_side
+    type: close
+  mode: single
+- id: '1615941665066'
+  alias: tv time
+  description: ''
+  trigger:
+  - platform: device
+    device_id: ee1b7c9f184248b59ee5e6923a6f4e3e
+    domain: media_player
+    entity_id: media_player.great_room_tv
+    type: playing
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 9a66d2ec39748cf20214a6960f1e485f
+    entity_id: switch.desk_light_current_value_2
+    domain: switch
+  mode: single
