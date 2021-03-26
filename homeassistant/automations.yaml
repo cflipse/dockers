@@ -4,11 +4,11 @@
   use_blueprint:
     path: homeassistant/motion_switch.yaml
     input:
-      no_motion_wait: '600'
-      motion_entity: binary_sensor.utility_room_sensor_home_security_motion_detection_2
+      no_motion_wait: 600
       switch_target:
         entity_id:
         - switch.utility_lights_current_value_2
+      motion_entity: binary_sensor.utility_room_sensor_home_security_motion_detection_2
 - id: '1613319585064'
   alias: Control Floodlight from deck
   description: ''
