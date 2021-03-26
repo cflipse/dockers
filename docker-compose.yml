@@ -15,8 +15,8 @@ services:
     network_mode: host
 
   zwavejs:
-    container_name: zwavej2
-    image: zwavejs/zwavejs2mqtt:latest
+    container_name: zwavejs
+    image: zwavejs/zwavejs2mqtt:2.4.1
     tty: true
     stop_signal: SIGINT
     restart: unless-stopped
