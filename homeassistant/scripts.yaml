@@ -1,13 +1,13 @@
 lock_all_doors:
   alias: Lock all doors
   sequence:
-  - device_id: bf45d51b2570b64f956b998551a2ff0f
+  - device_id: c24e4f96f88827cce63ff0891a8ee0fb
     domain: lock
-    entity_id: lock.basement_door
+    entity_id: lock.basement
     type: lock
-  - device_id: d9a6909240cd6a9473f1e191ee381835
+  - device_id: 5d7e6ff4cc316a1adf9bd1f0632640aa
     domain: lock
-    entity_id: lock.front_door
+    entity_id: lock.frontdoor
     type: lock
   mode: single
   icon: mdi:lock

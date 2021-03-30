@@ -6,24 +6,24 @@
     input:
       no_motion_wait: 600
       switch_target:
-        entity_id:
-        - switch.utility_lights_current_value_2
-      motion_entity: binary_sensor.utility_room_sensor_home_security_motion_detection_2
+        entity_id: switch.scene_capable_wall_switch
+      motion_entity: binary_sensor.utilitysensor_home_security_motion_detection
 - id: '1613319585064'
   alias: Control Floodlight from deck
   description: ''
   use_blueprint:
     path: homeassistant/multitap.yaml
     input:
-      homeseer_switch: 45f791a29a1696accabe141150fa24fb
+      homeseer_switch: b1532caedaebc441963f5fe0b28bb8e1
       button_a2:
-      - service: light.turn_on
-        data: {}
-        entity_id: light.flood_light_current_value
+      - type: turn_on
+        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
+        entity_id: light.floodlight
+        domain: light
       button_b2:
       - type: turn_off
-        device_id: 20c203fecca7c2d594f59b29c14a9be9
-        entity_id: light.flood_light_current_value
+        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
+        entity_id: light.floodlight
         domain: light
       button_a3: []
       button_a_held: []
@@ -52,29 +52,28 @@
   description: Turn on the office lamp when I'm in the room, and the lights are low
   trigger:
   - platform: state
-    entity_id: binary_sensor.office_home_security_motion_detection
     to: 'on'
+    entity_id: binary_sensor.officesensor_home_security_motion_detection
   condition:
   - condition: numeric_state
-    entity_id: sensor.office_illuminance
+    entity_id: sensor.officesensor_illuminance
     below: '23'
   action:
   - type: turn_on
-    device_id: 6224466d47425a536ec34a34f7842ee5
-    entity_id: light.plugin_dimmer_current_value
-    domain: light
-    brightness_pct: 100
+    device_id: 819414552a1e5219fa6d112660fba929
+    entity_id: switch.smart_switch_6
+    domain: switch
   - wait_for_trigger:
     - platform: state
-      entity_id: binary_sensor.office_home_security_motion_detection
       from: 'on'
       to: 'off'
+      entity_id: binary_sensor.officesensor_home_security_motion_detection
   - wait_template: ''
     timeout: '60'
   - type: turn_off
-    device_id: 6224466d47425a536ec34a34f7842ee5
-    entity_id: light.plugin_dimmer_current_value
-    domain: light
+    device_id: 819414552a1e5219fa6d112660fba929
+    entity_id: switch.smart_switch_6
+    domain: switch
   mode: restart
   max_exceeded: silent
 - id: '1613414120164'
@@ -86,11 +85,6 @@
     zone: zone.home
     event: leave
   action:
-  - delay:
-      hours: 0
-      minutes: 5
-      seconds: 0
-      milliseconds: 0
   - service: script.lock_all_doors
     data: {}
   mode: restart
@@ -109,9 +103,10 @@
     type: is_off
   action:
   - type: turn_on
-    device_id: 9a66d2ec39748cf20214a6960f1e485f
-    entity_id: switch.desk_light_current_value_2
-    domain: switch
+    device_id: 589d5e63125d799f782acc855c9a8fcd
+    entity_id: light.readinglight
+    domain: light
+    brightness_pct: 90
   mode: single
 - id: '1615923510099'
   alias: lockdown at night
@@ -144,7 +139,7 @@
   condition: []
   action:
   - type: turn_off
-    device_id: 9a66d2ec39748cf20214a6960f1e485f
-    entity_id: switch.desk_light_current_value_2
-    domain: switch
+    device_id: 589d5e63125d799f782acc855c9a8fcd
+    entity_id: light.readinglight
+    domain: light
   mode: single
