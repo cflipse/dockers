@@ -1,6 +1,2 @@
 .env
-
-homeassistant/mqtt_dump.txt
-homeassistant/tts/
-
 *.bak

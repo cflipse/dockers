@@ -1,0 +1,6 @@
+.env
+
+config/mqtt_dump.txt
+config/tts/
+
+*.bak

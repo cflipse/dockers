@@ -6,7 +6,7 @@ services:
     image: homeassistant/home-assistant:stable
 
     volumes:
-      - "./homeassistant:/config"
+      - "./config:/config"
 
     environment:
       - TZ=America/New_York
