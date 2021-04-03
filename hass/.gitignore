@@ -3,4 +3,6 @@
 config/mqtt_dump.txt
 config/tts/
 
+config/custom_components/hacs
+
 *.bak
