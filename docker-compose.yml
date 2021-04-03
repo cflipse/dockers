@@ -13,16 +13,3 @@ services:
 
     restart: unless-stopped
     network_mode: host
-
-  zwavejs:
-    container_name: zwavejs
-    image: zwavejs/zwavejs2mqtt:3.0.3
-    tty: true
-    stop_signal: SIGINT
-    restart: unless-stopped
-    devices:
-      #- "/dev/serial/by-id/usb-0658_0200_01FFFFFF-FFFF-FFFF-FFFF-150916075924-if00:/dev/ttyACM0:rmw"  # homeseer
-      - "/dev/serial/by-id/usb-0658_0200-if00:/dev/ttyACM0:rmw"  # aeotech
-    volumes:
-      - "./zwavejs2mqtt:/usr/src/app/store"
-    network_mode: host
