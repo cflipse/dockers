@@ -16,3 +16,4 @@ services:
       - "./store:/usr/src/app/store"
     ports:
       - "8091:8091"
+      - "8095:8095"
