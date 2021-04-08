@@ -143,3 +143,16 @@
     entity_id: light.readinglight
     domain: light
   mode: single
+- id: '1617723450648'
+  alias: Turn on Towel Rack in the morning
+  description: ''
+  trigger:
+  - platform: time
+    at: '6:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
+    entity_id: switch.towelrack
+    domain: switch
+  mode: single
