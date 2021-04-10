@@ -2,7 +2,8 @@
 
 config/mqtt_dump.txt
 config/tts/
+config/custom_components
 
-config/custom_components/hacs
+config/.aarlo
 
 *.bak
