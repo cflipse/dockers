@@ -5,9 +5,9 @@
     path: homeassistant/motion_switch.yaml
     input:
       no_motion_wait: 600
-      switch_target:
-        entity_id: switch.scene_capable_wall_switch
       motion_entity: binary_sensor.utilitysensor_home_security_motion_detection
+      switch_target:
+        device_id: fc78bfbecfaee49aa29b3c42c04959b6
 - id: '1613319585064'
   alias: Control Floodlight from deck
   description: ''
