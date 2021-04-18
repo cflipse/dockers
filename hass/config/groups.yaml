@@ -4,3 +4,29 @@ door_locks:
   entities:
     - lock.basement
     - lock.frontdoor
+
+
+battery_notifications:
+  entities:
+    # Door strips
+    - binary_sensor.basementdoor_low_battery_level
+    - binary_sensor.deckdoor_low_battery_level
+    - binary_sensor.porchdoor_low_battery_level
+
+    # Door Locks
+    - binary_sensor.basementdoorlock_low_battery_level
+    - binary_sensor.basementdoorlock_power_management_replace_battery_soon
+    - binary_sensor.basementdoorlock_power_management_replace_battery_now
+    - binary_sensor.frontdoorlock_low_battery_level
+    - binary_sensor.frontdoorlock_power_management_replace_battery_soon
+    - binary_sensor.frontdoorlock_power_management_replace_battery_now
+
+    # water leaks
+    - binary_sensor.hotwaterleak_low_battery_level
+    - binary_sensor.sinkleak_low_battery_level
+
+    # Multisensors
+    - binary_sensor.officesensor_low_battery_level
+    - binary_sensor.porchsensor_low_battery_level
+    - binary_sensor.utilitysensor_low_battery_level
+    - binary_sensor.winesensor_low_battery_level
