@@ -3,7 +3,7 @@ version: "3"
 services:
   zwavejs:
     container_name: zwavejs
-    image: zwavejs/zwavejs2mqtt:3.4.0
+    image: zwavejs/zwavejs2mqtt:3.5.0
 
     tty: true
 
