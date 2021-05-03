@@ -156,3 +156,20 @@
     entity_id: switch.towelrack
     domain: switch
   mode: single
+- id: '1619096261881'
+  alias: Turn off towel rack
+  description: ''
+  use_blueprint:
+    path: homeassistant/multitap.yaml
+    input:
+      button_b2:
+      - type: turn_off
+        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
+        entity_id: switch.towelrack
+        domain: switch
+      homeseer_switch: 1d0de3dc70e8749f63d93124929ca77e
+      button_a2:
+      - type: turn_on
+        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
+        entity_id: switch.towelrack
+        domain: switch
