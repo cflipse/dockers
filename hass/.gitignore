@@ -7,3 +7,4 @@ config/custom_components
 config/.aarlo
 
 *.bak
+config/home-assistant_v2.db-*
