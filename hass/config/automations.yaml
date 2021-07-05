@@ -126,6 +126,9 @@
     domain: cover
     entity_id: cover.right_side
     type: close
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.autolock
   mode: single
 - id: '1615941665066'
   alias: tv time
