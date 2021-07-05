@@ -1,0 +1,14 @@
+- alias: Autolock front door
+  use_blueprint:
+    path: autolock/autolock.yaml
+    input:
+      door_lock:  lock.frontdoor
+      delay: "00:15:00"
+
+- alias: Autolock basement door
+  use_blueprint:
+    path: autolock/autolock.yaml
+    input:
+      door_lock:  lock.basement
+      delay: "00:15:00"
+

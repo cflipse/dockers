@@ -55,25 +55,3 @@
       action:
         service: script.turn_on
         entity_id: script.remove_cleaner_code
-
-    - alias: Automatic Lock front door
-      trigger:
-        platform: state
-        entity_id: lock.frontdoor
-        from: 'locked'
-        to: 'unlocked'
-        for: '00:15:00'
-      condition:
-        alias: "Autolock is enabled and the door is still unlocked"
-        condition: and
-        conditions:
-          - condition: state
-            entity_id: lock.frontdoor
-            state: 'unlocked'
-          - condition: state
-            entity_id: input_boolean.autolock
-            state: 'on'
-      action: 
-        service: lock.lock
-        entity_id: lock.frontdoor
-

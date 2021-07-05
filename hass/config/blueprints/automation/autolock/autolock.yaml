@@ -1,0 +1,44 @@
+blueprint:
+  name: Automatically Lock Door
+  description: Lock a door after a delay
+  domain: automation
+  input:
+    door_lock:
+      name: Door Lock
+      description: This door will be relocked after a delay
+      selector:
+        entity:
+          domain: lock
+    delay:
+      name: Delay
+      description: How long to wait before relocking.
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: seconds
+
+mode: restart
+
+trigger:
+  platform: state
+  entity_id: !input door_lock
+  from: 'locked'
+  to: 'unlocked'
+  for: !input delay
+
+condition:
+  alias: "Autolock is enabled and the door is still unlocked"
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: !input door_lock
+      state: 'unlocked'
+    - condition: state
+      entity_id: input_boolean.autolock
+      state: 'on'
+
+action:
+  service: lock.lock
+  entity_id: !input door_lock
+
