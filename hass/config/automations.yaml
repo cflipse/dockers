@@ -176,3 +176,20 @@
         device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
         entity_id: switch.towelrack
         domain: switch
+- id: '1625528427313'
+  alias: Floodlight control
+  description: ''
+  use_blueprint:
+    path: homeassistant/multitap.yaml
+    input:
+      homeseer_switch: b1532caedaebc441963f5fe0b28bb8e1
+      button_a2:
+      - type: turn_on
+        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
+        entity_id: light.floodlight
+        domain: light
+      button_b2:
+      - type: turn_off
+        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
+        entity_id: light.floodlight
+        domain: light
