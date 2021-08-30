@@ -193,3 +193,20 @@
         device_id: 0d1390a64d8306c2cc53d12a9dcf1915
         entity_id: light.floodlight
         domain: light
+- id: '1629442076391'
+  alias: bathroom dimmer
+  description: ''
+  use_blueprint:
+    path: homeassistant/multitap.yaml
+    input:
+      homeseer_switch: d81130118d061171a87f61c727a02df0
+      button_b2:
+      - type: turn_off
+        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
+        entity_id: switch.towelrack
+        domain: switch
+      button_a2:
+      - type: turn_on
+        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
+        entity_id: switch.towelrack
+        domain: switch
