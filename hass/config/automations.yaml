@@ -8,26 +8,6 @@
       motion_entity: binary_sensor.utilitysensor_home_security_motion_detection
       switch_target:
         device_id: fc78bfbecfaee49aa29b3c42c04959b6
-- id: '1613319585064'
-  alias: Control Floodlight from deck
-  description: ''
-  use_blueprint:
-    path: homeassistant/multitap.yaml
-    input:
-      homeseer_switch: b1532caedaebc441963f5fe0b28bb8e1
-      button_a2:
-      - type: turn_on
-        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
-        entity_id: light.floodlight
-        domain: light
-      button_b2:
-      - type: turn_off
-        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
-        entity_id: light.floodlight
-        domain: light
-      button_a3: []
-      button_a_held: []
-      button_b_held: []
 - id: '1613332049244'
   alias: Trigger cleaning day
   description: Enable cleaner's access
@@ -159,54 +139,55 @@
     entity_id: switch.towelrack
     domain: switch
   mode: single
-- id: '1619096261881'
-  alias: Turn off towel rack
+- id: '1630636965647'
+  alias: Turn on floodlight
   description: ''
-  use_blueprint:
-    path: homeassistant/multitap.yaml
-    input:
-      button_b2:
-      - type: turn_off
-        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
-        entity_id: switch.towelrack
-        domain: switch
-      homeseer_switch: 1d0de3dc70e8749f63d93124929ca77e
-      button_a2:
-      - type: turn_on
-        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
-        entity_id: switch.towelrack
-        domain: switch
-- id: '1625528427313'
-  alias: Floodlight control
+  trigger:
+  - platform: device
+    device_id: b1532caedaebc441963f5fe0b28bb8e1
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '001'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 001
+    value: 3
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 0d1390a64d8306c2cc53d12a9dcf1915
+    entity_id: light.floodlight
+    domain: light
+  mode: single
+- id: '1630637127630'
+  alias: Turn off floodlight
   description: ''
-  use_blueprint:
-    path: homeassistant/multitap.yaml
-    input:
-      homeseer_switch: b1532caedaebc441963f5fe0b28bb8e1
-      button_a2:
-      - type: turn_on
-        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
-        entity_id: light.floodlight
-        domain: light
-      button_b2:
-      - type: turn_off
-        device_id: 0d1390a64d8306c2cc53d12a9dcf1915
-        entity_id: light.floodlight
-        domain: light
-- id: '1629442076391'
-  alias: bathroom dimmer
-  description: ''
-  use_blueprint:
-    path: homeassistant/multitap.yaml
-    input:
-      homeseer_switch: d81130118d061171a87f61c727a02df0
-      button_b2:
-      - type: turn_off
-        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
-        entity_id: switch.towelrack
-        domain: switch
-      button_a2:
-      - type: turn_on
-        device_id: 7f9e4e0cc37d22565b24839e2d96dd2b
-        entity_id: switch.towelrack
-        domain: switch
+  trigger:
+  - platform: device
+    device_id: b1532caedaebc441963f5fe0b28bb8e1
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '002'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 002
+    value: 3
+  - platform: device
+    device_id: 1d0de3dc70e8749f63d93124929ca77e
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '002'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 002
+    value: 4
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 0d1390a64d8306c2cc53d12a9dcf1915
+    entity_id: light.floodlight
+    domain: light
+  mode: single
