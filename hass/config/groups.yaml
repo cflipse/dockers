@@ -5,7 +5,6 @@ door_locks:
     - lock.basement
     - lock.frontdoor
 
-
 battery_notifications:
   entities:
     # Door strips

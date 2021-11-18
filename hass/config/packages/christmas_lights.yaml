@@ -1,0 +1,36 @@
+input_boolean:
+  christmas_lights:
+    name: Turn on the decoration lights
+
+
+group:
+  decoration_lights:
+    name: Christmas Lights
+    all: true
+    entities:
+      - light.smartdimmer1
+      - switch.smartplug1
+      - switch.smartplug2
+
+automation:
+  - alias: light up the night
+    trigger:
+      platform: sun
+      event: sunset
+      offset: "-00:45:00"
+    action:
+      service: switch.turn_on
+      target:
+        entity_id: group.decoration_lights
+
+  - alias: shutdown decorations
+    trigger:
+      platform: time
+      at: "21:00:00"
+    action:
+      service: switch.turn_off
+      target:
+        entity_id: group.decoration_lights
+
+
+
