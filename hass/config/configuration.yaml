@@ -59,3 +59,17 @@ light:
     - ding
     - cry
     - connectivity
+
+  - platform: switch
+    entity_id: switch.smartplug1
+  - platform: switch
+    entity_id: switch.smartplug2
+  - platform: switch
+    entity_id: switch.decklight
+  - platform: switch
+    entity_id: switch.garagelight
+  - platform: switch
+    entity_id: switch.overheadlight
+  - platform: switch
+    entity_id: switch.utilitylights
+

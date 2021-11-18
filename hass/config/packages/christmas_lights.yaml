@@ -1,36 +1,40 @@
 input_boolean:
   christmas_lights:
     name: Turn on the decoration lights
+    icon: "mdi:pine-tree"
 
+automation:
+  - alias: "Christmas Decorations"
+    trigger:
+      - platform: state
+        entity_id: input_boolean.christmas_lights
+    action:
+      - service: scene.apply
+        data:
+          entities:
+            group.decoration_lights: "{{ states('input_boolean.christmas_lights') }}"
+
+  - alias: "Decorations on at Dusk"
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: "-00:45:00"
+    action:
+      - service: switch.turn_on
+        target:
+          entity_id: input_boolean.christmas_lights
+      - wait_for_trigger:
+        - platform: time
+          at: "00:30"
+      - service: switch.turn_off
+        target:
+          entity_id: input_boolean.christmas_lights
 
 group:
   decoration_lights:
     name: Christmas Lights
-    all: true
     entities:
       - light.smartdimmer1
       - switch.smartplug1
       - switch.smartplug2
-
-automation:
-  - alias: light up the night
-    trigger:
-      platform: sun
-      event: sunset
-      offset: "-00:45:00"
-    action:
-      service: switch.turn_on
-      target:
-        entity_id: group.decoration_lights
-
-  - alias: shutdown decorations
-    trigger:
-      platform: time
-      at: "21:00:00"
-    action:
-      service: switch.turn_off
-      target:
-        entity_id: group.decoration_lights
-
-
 
