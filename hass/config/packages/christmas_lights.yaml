@@ -5,18 +5,20 @@ automation:
         event: sunset
         offset: "-00:45:00"
     action:
-      - service: switch.turn_on
-        target:
-          entity_id: group.decoration_lights
+      - service: scene.apply
+        data:
+          entities:
+            group.decoration_lights: on
 
   - alias: "Christmas Decorations off at night"
     trigger:
       - platform: time
         at: "00:30"
     action:
-      - service: switch.turn_off
-        target:
-          entity_id: group.decoration_lights
+      - service: scene.apply
+        data:
+          entities: 
+            group.decoration_lights: off
 
 group:
   decoration_lights:
